@@ -1,9 +1,45 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-// var board = 
+var board = {
+  cells: [
+    { row: 0, col: 0, isMine: true, hidden: true 
+    }, 
+    { row: 0, col: 1, isMine: false, hidden: true  
+    }, 
+    { row: 0, col: 2, isMine: true, hidden: true   
+    }, 
+    { row: 1, col: 0, isMine: true, hidden: true   
+    },
+    { row: 1, col: 1, isMine: false, hidden: true   
+    }, 
+    { row: 1, col: 2, isMine: false, hidden: true    
+    }, 
+    { row: 2, col: 0, isMine: true, hidden: true   
+    },
+    { row: 2, col: 1, isMine: true, hidden: true   
+    }, 
+    { row: 2, col: 2, isMine: false, hidden: true   
+    }]
+}
 
-function startGame () {
+
+
+
+
+
+function startGame() {
+  //write a for loop that loops through board.cells
+  //call countSurroundingMines once for each cell in board.cells
+  //pass each cell as an argument
+  //assign result of countSurroundingMines to a property on each cell object
+  //call it surroundingMines
+  for(i = 0; i < board.cells.length; i++){
+    cell = board.cells[i]
+    cell.surroundingMines = countSurroundingMines(cell)
+    console.log(board.cells)
+  }
+  //  
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
 }
@@ -12,7 +48,7 @@ function startGame () {
 //
 // 1. Are all of the cells that are NOT mines visible?
 // 2. Are all of the mines marked?
-function checkForWin () {
+function checkForWin() {
 
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
@@ -27,6 +63,22 @@ function checkForWin () {
 //
 // It will return cell objects in an array. You should loop through 
 // them, counting the number of times `cell.isMine` is true.
-function countSurroundingMines (cell) {
+function countSurroundingMines(cell) {
+  //loop surrounding cells array
+  //if isMine is equal to true, add to count variable
+  //return count
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col)
+  var count = 0
+  for(j = 0; j < surrounding.length; j++) {
+    if (surrounding[j].isMine === true) {
+  
+// ollie said something about ++??
+    count ++ }}
+
+   return count
+    // }
+    
+  // }
+   console.log(surrounding)
 }
 
