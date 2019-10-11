@@ -86,10 +86,7 @@ function countSurroundingMines(cell) {
 
   return count;
 
-  // }
-
-  // }
-  //console.log(surrounding)
+  
 }
 
 function restart () {
