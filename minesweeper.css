@@ -8,6 +8,8 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-color: #FFBB99;
+  
 }
 
 #message, #notes {
@@ -17,7 +19,8 @@ body {
 }
 
 #message {
-  font-size: 1.5rem;
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
 }
 
 .board {
@@ -30,8 +33,8 @@ body {
   font-size: 2rem;
   width: 75px;
   height: 75px;
-  border: 1px #ccc dotted;
-  border-radius: 10%;
+  border: 1px black solid;
+  border-radius: 50%;
   background-color: white;
   margin: 3px;
   display: flex;
@@ -44,17 +47,27 @@ body {
 }
 
 div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+  background: no-repeat center/100% url("images/20110824-pusheen-burger.gif");
 }
 
 div.hidden {
-  background: #eee;
+  background: #374A2E;
 }
 
 div.hidden:hover {
-  background: #ccc;
+  background: rgb(96, 129, 80);
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/110% url("images/pusheen-inspector.gif");
+}
+
+button {
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  margin: 25px;
+}
+
+button:hover {
+
 }

@@ -1,52 +1,33 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
-// Define your `board` object here!
-var board = {
-  cells: [
-    {
-      row: 0, col: 0, isMine: true, hidden: true
-    },
-    {
-      row: 0, col: 1, isMine: false, hidden: true
-    },
-    {
-      row: 0, col: 2, isMine: true, hidden: true
-    },
-    {
-      row: 1, col: 0, isMine: true, hidden: true
-    },
-    {
-      row: 1, col: 1, isMine: false, hidden: true
-    },
-    {
-      row: 1, col: 2, isMine: false, hidden: true
-    },
-    {
-      row: 2, col: 0, isMine: true, hidden: true
-    },
-    {
-      row: 2, col: 1, isMine: true, hidden: true
-    },
-    {
-      row: 2, col: 2, isMine: false, hidden: true
-    }]
+// Define your `board` object here! 
+var board = { cells: [] }
+
+
+function makeBoard() {
+
+  for (var x = 0; x < 6; x++) {
+    for (var y = 0; y < 6; y++) {
+      var random = Math.random();
+      board.cells.push({
+        row: x,
+        col: y,
+        isMine: Boolean(Math.floor(Math.random() * 1.5)),
+        isMarked: false,
+        hidden: true
+      })
+    }
+  }
 }
 
 
-
-
-
-
 function startGame() {
-  //write a for loop that loops through board.cells
-  //call countSurroundingMines once for each cell in board.cells
-  //pass each cell as an argument
-  //assign result of countSurroundingMines to a property on each cell object
-  //call it surroundingMines
+  
+  makeBoard()
   for (i = 0; i < board.cells.length; i++) {
-    cell = board.cells[i]
-    cell.surroundingMines = countSurroundingMines(cell)
+  board.cells[i].surroundingMines = countSurroundingMines(board.cells[i]);
   }
+
   document.addEventListener('click', checkForWin)
   document.addEventListener('contextmenu', checkForWin)
   // Don't remove this function call: it makes the game work!
@@ -64,7 +45,7 @@ function checkForWin() {
   // if cell is true to isMine and true to isMarked - you have won???
   //
   for (k = 0; k < board.cells.length; k++) {
-    if (board.cells[k].isMine === true && board.cells[k].isMarked !== true) {
+    if (board.cells[k].isMine === true && board.cells[k].isMarked === false) {
       console.log('hey')
       return
     }
@@ -92,8 +73,9 @@ function countSurroundingMines(cell) {
   //loop surrounding cells array
   //if isMine is equal to true, add to count variable
   //return count
-  var surrounding = lib.getSurroundingCells(cell.row, cell.col)
   var count = 0
+  var surrounding = lib.getSurroundingCells(cell.row, cell.col)
+  
   for (j = 0; j < surrounding.length; j++) {
     if (surrounding[j].isMine === true) {
 
@@ -102,10 +84,16 @@ function countSurroundingMines(cell) {
     }
   }
 
-  return count
+  return count;
+
   // }
 
   // }
   //console.log(surrounding)
 }
+
+function restart () {
+  document.location.reload();
+}
+
 
